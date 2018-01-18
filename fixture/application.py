@@ -3,7 +3,7 @@ from selenium import webdriver
 
 from fixture.session import SessionHelper
 from fixture.navigation import NavigationHelper
-from fixture.ProjectHelper import ProjectHelper
+from fixture.project import ProjectHelper
 
 
 class Application:

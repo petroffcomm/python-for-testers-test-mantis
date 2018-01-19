@@ -1,7 +1,7 @@
 
 from model.project import Project
 
-from datagen.utils import random_string
+from datagen.utils import random_string, rnd_name_string
 
 # default values
 projects_qty = 10
@@ -13,6 +13,6 @@ if __name__ == "__main__":
 
 
 testdata = [
-    Project(name=random_string("project name:", 10), description=random_string("", 200))
+    Project(name=rnd_name_string("project name:", 10), description=random_string("", 200))
     for i in range(projects_qty)
 ]

@@ -11,5 +11,5 @@ def random_string(prefix, maxlen):
 
 
 def rnd_name_string(prefix, maxlen):
-    symbols = string.ascii_letters + "._-"
-    return prefix + " " + "".join([random.choice(symbols) for i in range(random.randrange(maxlen))])
+    symbols = string.ascii_letters
+    return prefix + "".join([random.choice(symbols) for i in range(random.randrange(maxlen))])

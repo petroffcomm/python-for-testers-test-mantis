@@ -1,13 +1,17 @@
 # -*- coding: utf-8 -*-
 from selenium import webdriver
 
+from fixture.mantis_soap_api import MantisSoapApiHelper
 from fixture.session import SessionHelper
 from fixture.navigation import NavigationHelper
-from fixture.project import ProjectHelper
+from fixture.mantis_project import ProjectHelper
+from fixture.mantis_signup import MantisSignUpHelper
+from fixture.james import JamesHelper
+from fixture.mail import MailHelper
 
 
 class Application:
-    def __init__(self, browser, base_url):
+    def __init__(self, browser, config):
         if browser == "firefox":
             self.wd = webdriver.Firefox(capabilities={"marionette": False},
                                         firefox_binary=
@@ -21,11 +25,17 @@ class Application:
         else:
             raise ValueError("Unrecognized browser: %s" % browser)
 
-        self.base_url = base_url
+        self.config = config
+        self.base_url = config['web']['baseUrl']
 
         self.session = SessionHelper(self)
         self.navigation = NavigationHelper(self)
         self.projects = ProjectHelper(self)
+        self.mantis_signup = MantisSignUpHelper(self)
+        self.mantis_soap_api = MantisSoapApiHelper(self)
+
+        self.james = JamesHelper(self)
+        self.mail = MailHelper(self)
 
     def is_valid(self):
         try:
